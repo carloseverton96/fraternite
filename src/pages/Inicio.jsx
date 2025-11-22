@@ -6,7 +6,7 @@ import "../css/index.css";
 import Carousel from "../components/Carousel";
 
 // BANCO DE DADOS LOCAL
-import inicioData from "../data/inicioData";
+import InicioData from "../data/inicioData";
 
 export default function Inicio() {
   const { edicaoAtual, edicoesAnteriores, carrossel } = inicioData;

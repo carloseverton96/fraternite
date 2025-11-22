@@ -2,13 +2,12 @@
 // BANCO DE DADOS LOCAL - PÁGINA INICIAL
 // ================================
 
-import capaAtual from "../../public/janeiro.jpeg";
+import capaAtual from "../../public/capa.jpeg";
 import capaJan from "../../public/janeiro.jpeg";
-import capaFev from "../../public/janeiro.jpeg";
-import capaMar from "../../public/janeiro.jpeg";
+import capaFev from "../../public/feveiro.jpeg";
+import capaMar from "../../public/marco.jpeg";
 
-// (ALERTA: ajuste os caminhos conforme sua estrutura de pastas)
-
+// CORREÇÃO: Mude "InicioData" para "inicioData" (minúsculo)
 const inicioData = {
   /* ===============================
       EDIÇÃO ATUAL
