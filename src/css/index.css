@@ -1,47 +1,80 @@
 /* ===========================================
    🎨 IDENTIDADE VISUAL — PERIÓDICO ESPÍRITA
+   =========================================== 
+   
+   Sistema de Design para publicação espírita
+   Mantém cores tradicionais com tipografia clássica
+   Design responsivo e acessível
+*/
+
+/* ===========================================
+   🎯 VARIÁVEIS CSS - SISTEMA DE DESIGN
    =========================================== */
 
 :root {
-  --azul: #003366;
-  --verde: #0C853A;
-  --amarelo: #E4B500;
-  --vermelho: #7A0E0E;
+  /* 🎨 PALETA DE CORES PRIMÁRIAS */
+  --azul: #003366;        /* Azul tradicional - confiança, seriedade */
+  --verde: #0C853A;       /* Verde natureza - crescimento, esperança */
+  --amarelo: #E4B500;     /* Amarelo dourado - luz, sabedoria */
+  --vermelho: #7A0E0E;    /* Vermelho vinho - paixão, espiritualidade */
 
-  --papel: #F5F4EF;
-  --preto-suave: #1E1E1E;
+  /* 🎨 PALETA DE CORES NEUTRAS */
+  --papel: #F5F4EF;       /* Cor de papel antigo - nostalgia */
+  --preto-suave: #1E1E1E; /* Preto suavizado - melhor legibilidade */
+  --cinza-claro: #f8f9fa; /* Fundo claro para cards */
+  --cinza-borda: #e0e0e0; /* Bordas sutis */
 
+  /* 🎨 CORES SEMÂNTICAS */
   --bg: var(--papel);
   --text: var(--preto-suave);
+  --primary: var(--vermelho);
+  --secondary: var(--azul);
+  --accent: var(--amarelo);
 
-  --heading-font: "Libre Baskerville", serif;
-  --body-font: "Source Serif Pro", serif;
+  /* 🎨 TIPOGRAFIA */
+  --heading-font: "Libre Baskerville", serif;  /* Títulos - elegância */
+  --body-font: "Source Serif Pro", serif;      /* Corpo - legibilidade */
 
+  /* 🎨 ESPAÇAMENTOS E BORDAS */
   --radius: 8px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  
+  /* 🎨 TRANSITIONS */
+  --transition: all 0.3s ease;
+  --transition-fast: all 0.25s ease;
 }
 
-/* ============================
-   ESTÉTICA GLOBAL
-   ============================ */
+/* ===========================================
+   🔧 RESET E ESTILOS GLOBAIS
+   =========================================== */
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background: var(--papel);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--body-font);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Container principal - centralizado e responsivo */
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* ============================
-   NAVBAR
-   ============================ */
+/* ===========================================
+   🧭 BARRA DE NAVEGAÇÃO
+   =========================================== */
 
 .navbar {
   width: 100%;
@@ -49,43 +82,73 @@ body {
   color: white;
   border-bottom: 4px solid var(--vermelho);
   padding: 0.6rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .navbar-content {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
 }
 
+/* Marca/Logo */
 .brand {
   font-family: var(--heading-font);
   font-size: 1.4rem;
   color: white;
+  font-weight: 700;
+  text-decoration: none;
 }
 
+/* Links de navegação */
 .nav-links {
   display: flex;
   gap: 1.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.3s;
+  transition: var(--transition);
+  padding: 0.5rem 0;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: var(--amarelo);
 }
 
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--amarelo);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* 📱 RESPONSIVIDADE - NAVBAR */
 @media (max-width: 650px) {
   .navbar-content {
     flex-direction: column;
     gap: 0.7rem;
+    text-align: center;
   }
 
   .nav-links {
@@ -95,58 +158,92 @@ body {
   }
 }
 
-/* ============================
-   TÍTULOS
-   ============================ */
+/* ===========================================
+   📰 CABEÇALHOS E TÍTULOS
+   =========================================== */
 
 .titulo-principal {
   font-family: var(--heading-font);
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   color: var(--azul);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .periodico-sub {
   font-size: 1.05rem;
   color: var(--preto-suave);
   margin-bottom: 2rem;
+  opacity: 0.8;
+  font-style: italic;
 }
 
-/* ============================
-   GRID DO PERIÓDICO
-   ============================ */
+/* ===========================================
+   📖 SEÇÃO PRINCIPAL DO PERIÓDICO
+   =========================================== */
 
 .periodico-mensal-section {
   margin-top: 2rem;
   padding: 2rem;
   background: white;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid var(--cinza-borda);
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
+/* Grid de duas colunas para layout de conteúdo */
 .periodico-grid-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  align-items: start;
 }
 
 .periodico-img {
   width: 100%;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: var(--transition);
+}
+
+.periodico-img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 .periodico-edicao {
   font-family: var(--heading-font);
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  color: var(--azul);
+  font-weight: 600;
 }
 
 .periodico-descricao {
   color: #222;
   line-height: 1.6;
   margin-bottom: 1.6rem;
+  font-size: 1.05rem;
 }
+
+/* 📱 RESPONSIVIDADE - SEÇÃO PERIÓDICO */
+@media (max-width: 900px) {
+  .periodico-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .periodico-img {
+    max-width: 380px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* ===========================================
+   🎯 BOTÕES - SISTEMA CONSISTENTE
+   =========================================== */
 
 .bio-button {
   display: inline-block;
@@ -156,30 +253,26 @@ body {
   text-decoration: none;
   border-radius: var(--radius);
   font-weight: 600;
-  transition: 0.3s;
+  transition: var(--transition);
+  border: 2px solid var(--vermelho);
+  text-align: center;
+  cursor: pointer;
 }
 
 .bio-button:hover {
   background: #a01313;
+  border-color: #a01313;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(122, 14, 14, 0.3);
 }
 
-@media (max-width: 900px) {
-  .periodico-grid-2col {
-    grid-template-columns: 1fr;
-  }
-
-  .periodico-img {
-    max-width: 380px;
-    margin: auto;
-  }
-}
-
-/* ============================
-   EDIÇÕES ANTERIORES
-   ============================ */
+/* ===========================================
+   📚 EDIÇÕES ANTERIORES
+   =========================================== */
 
 .anteriores-section {
   margin-top: 3rem;
+  padding: 0 1rem;
 }
 
 .anteriores-titulo {
@@ -187,43 +280,51 @@ body {
   font-size: 1.6rem;
   color: var(--azul);
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .anteriores-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
 .anteriores-card {
   background: white;
   border-radius: var(--radius);
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 1rem;
+  border: 1px solid var(--cinza-borda);
+  padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.anteriores-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .anteriores-link {
   color: var(--vermelho);
   font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-@media (max-width: 700px) {
-  .anteriores-grid {
-    grid-template-columns: 1fr;
-  }
+.anteriores-link:hover {
+  color: #a01313;
+  text-decoration: underline;
 }
 
-/* ============================
-   🔄 CAROUSEL
-   ============================ */
+/* ===========================================
+   🎠 CARROSSEL DE DESTAQUES
+   =========================================== */
 
 .carousel-container {
   position: relative;
   width: 100%;
   max-width: 1100px;
-  margin: auto;
+  margin: 2rem auto;
   overflow: hidden;
   border-radius: 14px;
   box-shadow: 0 6px 14px rgba(0,0,0,0.22);
@@ -236,6 +337,7 @@ body {
   animation: fadeSlideIn 0.8s ease forwards;
 }
 
+/* Animação de entrada do slide */
 @keyframes fadeSlideIn {
   0% {
     opacity: 0;
@@ -251,8 +353,10 @@ body {
   width: 100%;
   height: 420px;
   object-fit: cover;
+  display: block;
 }
 
+/* Overlay de texto no carrossel */
 .carousel-text {
   position: absolute;
   bottom: 18px;
@@ -268,8 +372,10 @@ body {
 .carousel-text h2 {
   margin: 0 0 6px;
   font-size: 1.5rem;
+  font-family: var(--heading-font);
 }
 
+/* Botões de navegação do carrossel */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -281,11 +387,13 @@ body {
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.25s;
+  transition: var(--transition-fast);
+  z-index: 10;
 }
 
 .carousel-btn:hover {
   background: rgba(0,0,0,0.75);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-btn.left {
@@ -296,6 +404,7 @@ body {
   right: 12px;
 }
 
+/* 📱 RESPONSIVIDADE - CARROSSEL */
 @media (max-width: 600px) {
   .carousel-slide img {
     height: 290px;
@@ -311,15 +420,20 @@ body {
   .carousel-text h2 {
     font-size: 1.2rem;
   }
+  
+  .carousel-btn {
+    font-size: 1.5rem;
+    padding: 0.3rem 0.6rem;
+  }
 }
 
-/* ============================
-   PÁGINA DE CONTATOS
-   ============================ */
+/* ===========================================
+   📞 PÁGINA DE CONTATOS
+   =========================================== */
 
 .contatos-section {
   margin-top: 2rem;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
 
 .contatos-subtitulo {
@@ -328,8 +442,10 @@ body {
   font-size: 1.2rem;
   margin-bottom: 3rem;
   font-style: italic;
+  opacity: 0.8;
 }
 
+/* Grid de cards de contato */
 .contatos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -341,13 +457,14 @@ body {
   background: white;
   border-radius: var(--radius);
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--cinza-borda);
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
 
+/* Linha decorativa no topo do card */
 .contato-card::before {
   content: '';
   position: absolute;
@@ -360,13 +477,14 @@ body {
 
 .contato-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-hover);
 }
 
 .contato-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-align: center;
+  color: var(--azul);
 }
 
 .contato-titulo {
@@ -382,6 +500,7 @@ body {
   color: var(--vermelho);
   margin-bottom: 0.8rem;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .contato-info p {
@@ -391,7 +510,7 @@ body {
 }
 
 .contato-detalhes {
-  background: #f8f9fa;
+  background: var(--cinza-claro);
   padding: 1.2rem;
   border-radius: var(--radius);
   border-left: 4px solid var(--verde);
@@ -406,7 +525,10 @@ body {
   color: var(--azul);
 }
 
-/* Informações Adicionais */
+/* ===========================================
+   ℹ️ INFORMAÇÕES ADICIONAIS
+   =========================================== */
+
 .informacoes-adicionais {
   background: linear-gradient(135deg, var(--azul) 0%, #002244 100%);
   color: white;
@@ -421,6 +543,7 @@ body {
   font-size: 2rem;
   margin-bottom: 2.5rem;
   color: white;
+  font-weight: 700;
 }
 
 .informacoes-grid {
@@ -438,6 +561,7 @@ body {
   font-size: 1.3rem;
   margin-bottom: 1rem;
   color: var(--amarelo);
+  font-weight: 600;
 }
 
 .info-item p {
@@ -445,12 +569,15 @@ body {
   opacity: 0.9;
 }
 
-/* Formulário de Contato */
+/* ===========================================
+   📝 FORMULÁRIO DE CONTATO
+   =========================================== */
+
 .formulario-contato {
   background: white;
   padding: 3rem;
   border-radius: var(--radius);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -485,11 +612,12 @@ body {
 .form-group select,
 .form-group textarea {
   padding: 1rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--cinza-borda);
   border-radius: var(--radius);
   font-family: var(--body-font);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: var(--transition);
+  background: white;
 }
 
 .form-group input:focus,
@@ -497,6 +625,7 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
 }
 
 .form-group textarea {
@@ -510,16 +639,263 @@ body {
   font-size: 1.1rem;
   margin-top: 1rem;
   background: var(--verde);
-  border-color: var(--verde);
+  border: 2px solid var(--verde);
+  color: white;
 }
 
 .enviar-btn:hover {
   background: #0a6b2f;
   border-color: #0a6b2f;
+  transform: translateY(-2px);
 }
 
-/* Responsividade */
+/* ===========================================
+   📄 PÁGINA INDIVIDUAL DO PERIÓDICO
+   =========================================== */
+
+.periodico-single-container {
+  max-width: 600px;
+  margin: 100px auto 1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+/* Cabeçalho da página individual */
+.periodico-header-simple {
+  margin-bottom: 2rem;
+}
+
+.periodico-mes-ano {
+  font-family: var(--heading-font);
+  font-size: 2.2rem;
+  color: var(--azul);
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.periodico-descricao-simple {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Divisor decorativo */
+.periodico-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--vermelho) 50%, transparent 100%);
+  margin: 2rem 0;
+}
+
+/* Grid de informações de contato */
+.periodico-contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.contact-item {
+  padding: 1.5rem 1rem;
+  background: var(--cinza-claro);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--verde);
+  transition: var(--transition);
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.contact-item h3 {
+  color: var(--azul);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: #555;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.contact-item span {
+  color: var(--vermelho);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Área de ações/buttons */
+.periodico-actions-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.action-btn {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.primary-btn {
+  background: var(--vermelho);
+  color: white;
+  border-color: var(--vermelho);
+}
+
+.primary-btn:hover {
+  background: #a01313;
+  border-color: #a01313;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(122, 14, 14, 0.3);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--azul);
+  border-color: var(--azul);
+}
+
+.secondary-btn:hover {
+  background: var(--azul);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Informações meta adicionais */
+.periodico-meta-info {
+  background: var(--cinza-claro);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 2rem;
+}
+
+.meta-item {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.meta-item strong {
+  color: var(--azul);
+}
+
+/* ===========================================
+   📊 VISUALIZADOR DE PDF
+   =========================================== */
+
+.pdf-viewer-container {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--cinza-claro);
+  border-radius: 12px;
+  border: 1px solid var(--cinza-borda);
+}
+
+.pdf-viewer-container h3 {
+  text-align: center;
+  color: var(--azul);
+  margin-bottom: 1.5rem;
+  font-family: var(--heading-font);
+  font-weight: 700;
+}
+
+.pdf-viewer {
+  width: 100%;
+  border: 2px solid var(--cinza-borda);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.pdf-viewer embed {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+}
+
+.pdf-viewer-note {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Botão de contorno alternativo */
+.outline-btn {
+  background: transparent;
+  color: var(--azul);
+  border: 2px solid var(--azul);
+}
+
+.outline-btn:hover {
+  background: var(--azul);
+  color: white;
+}
+
+/* Estado de carregamento */
+.pdf-loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--azul);
+  font-style: italic;
+}
+
+.pdf-loading::after {
+  content: "Carregando PDF...";
+  display: block;
+  margin-top: 1rem;
+}
+
+/* ===========================================
+   📱 RESPONSIVIDADE GERAL
+   =========================================== */
+
 @media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  .periodico-single-container {
+    margin: 80px 1rem 1rem;
+    padding: 1.5rem;
+  }
+  
+  .periodico-mes-ano {
+    font-size: 1.8rem;
+  }
+  
+  .periodico-contact-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .contact-item {
+    padding: 1.2rem;
+  }
+  
+  .action-btn {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  /* Responsividade para contatos */
   .contatos-section {
     padding: 1rem;
   }
@@ -552,180 +928,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .contato-card {
-    padding: 1.2rem;
-  }
-  
-  .formulario-contato {
-    padding: 1.5rem 1rem;
-  }
-}
-
-/* ============================
-   PÁGINA INDIVIDUAL DO PERIÓDICO - LAYOUT SIMPLES
-   ============================ */
-
-.periodico-single-container {
-  max-width: 600px;
-  margin: 100px auto 2rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-  text-align: center;
-}
-
-/* Cabeçalho */
-.periodico-header-simple {
-  margin-bottom: 2rem;
-}
-
-.periodico-mes-ano {
-  font-family: var(--heading-font);
-  font-size: 2.2rem;
-  color: var(--azul);
-  margin: 0 0 1rem 0;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-.periodico-descricao-simple {
-  color: #666;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0;
-  font-style: italic;
-}
-
-/* Divisor */
-.periodico-divider {
-  border: none;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--vermelho) 50%, transparent 100%);
-  margin: 2rem 0;
-}
-
-/* Informações de Contato */
-.periodico-contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin: 2.5rem 0;
-}
-
-.contact-item {
-  padding: 1.5rem 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid var(--verde);
-}
-
-.contact-item h3 {
-  color: var(--azul);
-  font-size: 1.1rem;
-  margin: 0 0 0.5rem 0;
-  font-weight: 600;
-}
-
-.contact-item p {
-  color: #555;
-  margin: 0 0 0.5rem 0;
-  font-size: 0.95rem;
-}
-
-.contact-item span {
-  color: var(--vermelho);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* Ações */
-.periodico-actions-simple {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 2.5rem 0;
-}
-
-.action-btn {
-  display: block;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.primary-btn {
-  background: var(--vermelho);
-  color: white;
-  border: 2px solid var(--vermelho);
-}
-
-.primary-btn:hover {
-  background: #a01313;
-  border-color: #a01313;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(122, 14, 14, 0.3);
-}
-
-.secondary-btn {
-  background: transparent;
-  color: var(--azul);
-  border: 2px solid var(--azul);
-}
-
-.secondary-btn:hover {
-  background: var(--azul);
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* Informações Meta */
-.periodico-meta-info {
-  background: #f0f2f5;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-top: 2rem;
-}
-
-.meta-item {
-  margin: 0.5rem 0;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.meta-item strong {
-  color: var(--azul);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .periodico-single-container {
-    margin: 80px 1rem 1rem;
-    padding: 1.5rem;
-  }
-  
-  .periodico-mes-ano {
-    font-size: 1.8rem;
-  }
-  
-  .periodico-contact-info {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .contact-item {
-    padding: 1.2rem;
-  }
-  
-  .action-btn {
-    padding: 0.8rem 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
   .periodico-single-container {
     padding: 1rem;
   }
@@ -737,38 +939,490 @@ body {
   .periodico-descricao-simple {
     font-size: 1rem;
   }
+  
+  .contato-card {
+    padding: 1.2rem;
+  }
+  
+  .formulario-contato {
+    padding: 1.5rem 1rem;
+  }
+  
+  .titulo-principal {
+    font-size: 1.7rem;
+  }
 }
-/* ============================
-   VISUALIZADOR DE PDF
-   ============================ */
 
-.pdf-viewer-container {
-  margin: 3rem 0;
-  padding: 2rem;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
+/* ===========================================
+   🎭 UTILITÁRIOS E ESTADOS
+   =========================================== */
+
+/* Esconder visualmente mas manter acessível */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.pdf-viewer-container h3 {
+/* Foco visível para acessibilidade */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+/* Estados de loading */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--azul);
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================================
+   📚 PÁGINA DE EDIÇÕES
+   =========================================== */
+
+.edicoes-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Cabeçalho */
+.edicoes-header {
   text-align: center;
-  color: var(--azul);
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-bottom: 2px solid var(--cinza-borda);
+}
+
+.edicoes-titulo {
   font-family: var(--heading-font);
+  font-size: 2.5rem;
+  color: var(--azul);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.edicoes-subtitulo {
+  font-size: 1.2rem;
+  color: var(--preto-suave);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Grid de Edições */
+.edicoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card de Edição */
+.edicao-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--cinza-borda);
+  transition: var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.edicao-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--amarelo);
+}
+
+/* Container da Imagem com Overlay */
+.edicao-imagem-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.edicao-imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.edicao-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.edicao-card:hover .edicao-overlay {
+  opacity: 1;
+}
+
+.edicao-card:hover .edicao-imagem {
+  transform: scale(1.05);
+}
+
+.edicao-ver-mais {
+  background: var(--amarelo);
+  color: var(--preto-suave);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  transform: translateY(20px);
+}
+
+.edicao-card:hover .edicao-ver-mais {
+  transform: translateY(0);
+}
+
+.edicao-ver-mais:hover {
+  background: #f0c400;
+  transform: translateY(-2px);
+}
+
+/* Informações da Edição */
+.edicao-info {
+  padding: 1.5rem;
+}
+
+.edicao-mes {
+  font-family: var(--heading-font);
+  font-size: 1.3rem;
+  color: var(--azul);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.edicao-descricao {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.edicao-link {
+  color: var(--vermelho);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.edicao-link:hover {
+  color: #a01313;
+  gap: 0.5rem;
+}
+
+/* ===========================================
+   🔢 PAGINAÇÃO
+   =========================================== */
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+.paginacao-btn {
+  background: var(--azul);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.paginacao-btn:hover:not(.disabled) {
+  background: #002244;
+  transform: translateY(-2px);
+}
+
+.paginacao-btn.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.paginacao-numeros {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.paginacao-numero {
+  background: white;
+  border: 2px solid var(--cinza-borda);
+  color: var(--azul);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginacao-numero:hover {
+  border-color: var(--amarelo);
+  color: var(--amarelo);
+  transform: translateY(-2px);
+}
+
+.paginacao-numero.ativo {
+  background: var(--amarelo);
+  border-color: var(--amarelo);
+  color: var(--preto-suave);
+}
+
+.paginacao-pontos {
+  color: #666;
+  padding: 0 0.5rem;
+}
+
+.paginacao-info {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* ===========================================
+   📱 RESPONSIVIDADE - EDIÇÕES
+   =========================================== */
+
+@media (max-width: 768px) {
+  .edicoes-container {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+  
+  .edicoes-titulo {
+    font-size: 2rem;
+  }
+  
+  .edicoes-subtitulo {
+    font-size: 1.1rem;
+  }
+  
+  .edicoes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .edicao-info {
+    padding: 1.2rem;
+  }
+  
+  .paginacao {
+    gap: 0.5rem;
+  }
+  
+  .paginacao-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .paginacao-numero {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .edicoes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .edicoes-header {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .edicoes-titulo {
+    font-size: 1.8rem;
+  }
+  
+  .paginacao {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .paginacao-numeros {
+    order: -1;
+  }
+}
+
+/* Estados de fallback para imagens */
+.edicao-imagem {
+  background: linear-gradient(135deg, var(--cinza-claro) 0%, #e0e0e0 100%);
+}
+
+/* ===========================================
+   📚 PÁGINA DE EDIÇÕES - ATUALIZAÇÕES
+   =========================================== */
+
+/* Botões das edições no estilo do Inicio */
+.edicao-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.edicao-link {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.pdf-link {
+  background: var(--vermelho);
+  color: white;
+  border: 2px solid var(--vermelho);
+}
+
+.pdf-link:hover {
+  background: #a01313;
+  border-color: #a01313;
+  transform: translateY(-2px);
+}
+
+.online-link {
+  background: transparent;
+  color: var(--azul);
+  border: 2px solid var(--azul);
+}
+
+.online-link:hover {
+  background: var(--azul);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Ajustes para os links existentes */
+.edicao-info .edicao-descricao {
+  min-height: 60px;
+}
+
+/* Garantir que o overlay do card não atrapalhe os botões */
+.edicao-overlay {
+  z-index: 2;
+}
+
+.edicao-info {
+  position: relative;
+  z-index: 3;
+}
+/* ===========================================
+   📄 PÁGINA DO PERIÓDICO - MELHORIAS
+   =========================================== */
+
+.periodico-single-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.error-message h2 {
+  color: var(--vermelho);
+  margin-bottom: 1rem;
+}
+
+.error-message p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Navegação entre edições */
+.periodico-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cinza-borda);
+}
+
+/* Melhorias no visualizador de PDF */
+.pdf-viewer-container {
+  margin: 2rem 0;
 }
 
 .pdf-viewer {
-  width: 100%;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--radius);
   overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .pdf-viewer embed {
-  display: block;
-  width: 100%;
   min-height: 600px;
 }
 
@@ -780,27 +1434,125 @@ body {
   font-style: italic;
 }
 
-/* Botões Adicionais */
+/* Ações melhoradas */
+.periodico-actions-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.action-btn {
+  padding: 1rem 1.5rem;
+  border: 2px solid;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.primary-btn {
+  background: var(--vermelho);
+  color: white;
+  border-color: var(--vermelho);
+}
+
+.primary-btn:hover {
+  background: #a01313;
+  border-color: #a01313;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: var(--azul);
+  color: white;
+  border-color: var(--azul);
+}
+
+.secondary-btn:hover {
+  background: #002244;
+  border-color: #002244;
+  transform: translateY(-2px);
+}
+
 .outline-btn {
   background: transparent;
   color: var(--azul);
-  border: 2px solid var(--azul);
+  border-color: var(--azul);
 }
 
 .outline-btn:hover {
   background: var(--azul);
   color: white;
+  transform: translateY(-2px);
 }
 
-/* Estados de Loading */
-.pdf-loading {
-  text-align: center;
-  padding: 3rem;
+/* Informações meta melhoradas */
+.periodico-meta-info {
+  background: var(--cinza-claro);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+}
+
+.meta-item {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.meta-item strong {
   color: var(--azul);
 }
 
-.pdf-loading::after {
-  content: "Carregando PDF...";
-  display: block;
-  margin-top: 1rem;
+/* Divisor */
+.periodico-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--vermelho) 50%, transparent 100%);
+  margin: 2rem 0;
+}
+
+/* ===========================================
+   📱 RESPONSIVIDADE - PÁGINA DO PERIÓDICO
+   =========================================== */
+
+@media (max-width: 768px) {
+  .periodico-single-container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+  
+  .pdf-viewer embed {
+    min-height: 500px;
+  }
+  
+  .periodico-actions-simple {
+    gap: 0.8rem;
+  }
+  
+  .action-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .periodico-single-container {
+    padding: 1rem;
+    margin: 0.5rem auto;
+  }
+  
+  .pdf-viewer embed {
+    min-height: 400px;
+  }
+  
+  .periodico-meta-info {
+    padding: 1rem;
+  }
+  
+  .periodico-actions-simple {
+    margin: 1.5rem 0;
+  }
 }

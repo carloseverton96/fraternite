@@ -7,7 +7,10 @@ export default function Periodico() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const periodico = periodicos.find((p) => p.id === id);
+  // Garantir que o ID seja tratado corretamente (string ou número)
+  const periodico = periodicos.find((p) => 
+    p.id.toString() === id.toString()
+  );
 
   if (!periodico) {
     return (
@@ -16,10 +19,10 @@ export default function Periodico() {
           <h2>Periódico não encontrado</h2>
           <p>A edição solicitada não está disponível em nossa base de dados.</p>
           <button 
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/edicoes")}
             className="action-btn primary-btn"
           >
-            ← Voltar para a Página Inicial
+            ← Voltar para Todas as Edições
           </button>
         </div>
       </div>
@@ -35,8 +38,10 @@ export default function Periodico() {
   const handleDownloadPDF = () => {
     const link = document.createElement('a');
     link.href = periodico.pdf;
-    link.download = `periodico-${periodico.mes.toLowerCase()}-${periodico.ano}.pdf`;
+    link.download = `periodico-fraternite-${periodico.mes?.toLowerCase()}-${periodico.ano}.pdf`;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -44,12 +49,17 @@ export default function Periodico() {
       
       {/* Cabeçalho Simples */}
       <header className="periodico-header-simple">
-        <h1 className="periodico-mes-ano">{periodico.mesAno}</h1>
-        <p className="periodico-descricao-simple">{periodico.descricao}</p>
+        <h1 className="periodico-mes-ano">
+          {periodico.mesAno || `${periodico.mes} ${periodico.ano}`}
+        </h1>
+        <p className="periodico-descricao-simple">
+          {periodico.descricao || "Edição do Periódico Espírita Fraternité"}
+        </p>
       </header>
 
       <hr className="periodico-divider" />
-{/* Informações Adicionais */}
+
+      {/* Informações Adicionais */}
       <div className="periodico-meta-info">
         <div className="meta-item">
           <strong>Publicação:</strong> Periódico Espírita Fraternité
@@ -60,9 +70,16 @@ export default function Periodico() {
         <div className="meta-item">
           <strong>Ano:</strong> {periodico.ano}
         </div>
-        <div className="meta-item">
-          <strong>Edição:</strong> {periodico.edicao}
-        </div>
+        {periodico.edicao && (
+          <div className="meta-item">
+            <strong>Edição:</strong> {periodico.edicao}
+          </div>
+        )}
+        {periodico.paginas && (
+          <div className="meta-item">
+            <strong>Páginas:</strong> {periodico.paginas}
+          </div>
+        )}
       </div>
       
       {/* Visualizador de PDF Embed */}
@@ -70,24 +87,25 @@ export default function Periodico() {
         <h3>Visualização do Periódico</h3>
         <div className="pdf-viewer">
           <embed
-            src={periodico.pdf}
+            src={`${periodico.pdf}#view=FitH`}
             type="application/pdf"
             width="100%"
             height="600px"
           />
         </div>
         <p className="pdf-viewer-note">
-          Se o PDF não carregar acima, use os botões "Ler PDF Online" ou "Baixar PDF Completo".
+          Se o PDF não carregar acima, use os botões abaixo para ler online ou baixar.
         </p>
       </div>
+
       {/* Ações Principais */}
       <div className="periodico-actions-simple">
-        {/* <button
+        <button
           onClick={handleOpenPDF}
           className="action-btn primary-btn"
         >
-          📖 Ler PDF Online
-        </button> */}
+          📖 Ler PDF Online (Nova Aba)
+        </button>
         
         <button
           onClick={handleDownloadPDF}
@@ -97,16 +115,22 @@ export default function Periodico() {
         </button>
         
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/edicoes")}
           className="action-btn outline-btn"
         >
-          ← Voltar para Edições
+          ← Voltar para Todas as Edições
         </button>
       </div>
 
-
-      
-      
+      {/* Navegação entre edições */}
+      <div className="periodico-navigation">
+        <button
+          onClick={() => navigate(-1)}
+          className="action-btn outline-btn"
+        >
+          ↩ Voltar para Página Anterior
+        </button>
+      </div>
 
     </div>
   );

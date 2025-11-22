@@ -48,23 +48,6 @@ export default function Contatos() {
               </div>
             </div>
 
-            {/* Desenvolvimento */}
-            <div className="contato-card">
-              <div className="contato-icon">💻</div>
-              <h2 className="contato-titulo">Desenvolvimento do Site</h2>
-              <div className="contato-info">
-                <h3>Suporte Técnico</h3>
-                <p>
-                  Desenvolvimento, manutenção e suporte técnico da plataforma 
-                  digital do periódico.
-                </p>
-                <div className="contato-detalhes">
-                  <p><strong>Email:</strong> dev@periodicofraternite.com</p>
-                  <p><strong>Responsável:</strong> Equipe de TI Fraternité</p>
-                  <p><strong>Especialidade:</strong> React, Node.js, UX/UI</p>
-                </div>
-              </div>
-            </div>
 
             {/* Colaborações */}
             <div className="contato-card">
@@ -102,6 +85,23 @@ export default function Contatos() {
               </div>
             </div>
 
+            {/* Desenvolvimento */}
+            <div className="contato-card">
+              <div className="contato-icon">💻</div>
+              <h2 className="contato-titulo">Desenvolvimento do Site</h2>
+              <div className="contato-info">
+                <h3>Suporte Técnico</h3>
+                <p>
+                  Desenvolvimento, manutenção e suporte técnico da plataforma 
+                  digital do periódico.
+                </p>
+                <div className="contato-detalhes">
+                  <p><strong>Email:</strong> dev@periodicofraternite.com</p>
+                  <p><strong>Responsável:</strong> Equipe de TI Fraternité</p>
+                  <p><strong>Especialidade:</strong> React, Node.js, UX/UI</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Informações Adicionais */}

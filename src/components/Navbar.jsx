@@ -6,16 +6,38 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-
-        {/* LOGO */}
-        <div className="brand">
-          <img src={logofraternite} alt="Logotipo" width={60} height="auto" />
+        
+        {/* LOGO E MARCA */}
+        <div className="brand-container">
+          <img 
+            src={logofraternite} 
+            alt="Logotipo Fraternité - Periódico Espírita" 
+            width={60} 
+            height="auto" 
+            className="brand-logo"
+          />
+          
         </div>
-
-        {/* LINKS */}
+<div className="brand-text">
+            PERIÓDICO ESPÍRITA FRATERNITÉ
+          </div>
+        {/* LINKS DE NAVEGAÇÃO */}
         <ul className="nav-links">
-          <li><Link to="/">Início</Link></li>
-          <li><Link to="/contato">Contatos</Link></li>
+          <li>
+            <Link to="/" className="nav-link">
+              Início
+            </Link>
+          </li>
+          <li>
+            <Link to="/edicoes" className="nav-link">
+              Edições
+            </Link>
+          </li>
+          <li>
+            <Link to="/contatos" className="nav-link">
+              Contatos
+            </Link>
+          </li>
         </ul>
 
       </div>
