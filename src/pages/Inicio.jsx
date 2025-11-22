@@ -6,10 +6,11 @@ import "../css/index.css";
 import Carousel from "../components/Carousel";
 
 // BANCO DE DADOS LOCAL
-import InicioData from "../data/inicioData";
+import InicioData from "../data/inicioData"; // Importa como InicioData
 
 export default function Inicio() {
-  const { edicaoAtual, edicoesAnteriores, carrossel } = inicioData;
+  // CORREÇÃO: Use InicioData (com I maiúsculo) em vez de inicioData
+  const { edicaoAtual, edicoesAnteriores, carrossel } = InicioData;
 
   return (
     <>
