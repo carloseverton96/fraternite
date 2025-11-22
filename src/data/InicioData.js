@@ -4,7 +4,7 @@
 
 import capaAtual from "../../public/capa.jpeg";
 import capaJan from "../../public/janeiro.jpeg";
-import capaFev from "../../public/feveiro.jpeg";
+import capaFev from "../../public/fevereiro.jpeg";
 import capaMar from "../../public/marco.jpeg";
 
 // CORREÇÃO: Mude "InicioData" para "inicioData" (minúsculo)
