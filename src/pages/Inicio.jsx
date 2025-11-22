@@ -16,7 +16,7 @@ export default function Inicio() {
     <>
       {/* SEO */}
       <Helmet>
-        <title>Periódico Espírita Fraternité - Edição Mensal</title>
+        <title>Periódico Espírita Fraternité -- Edição Mensal</title>
         <meta
           name="description"
           content="Leia o Periódico Espírita Fraternité — edição mensal dedicada ao estudo, reflexão e difusão da Doutrina Espírita."
