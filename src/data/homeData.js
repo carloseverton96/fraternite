@@ -1,5 +1,5 @@
 // ================================
-// BANCO DE DADOS LOCAL - PÁGINA INICIAL
+// BANCO DE DADOS LOCAL - HOME
 // ================================
 
 import capaAtual from "../../public/capa.jpeg";
@@ -7,11 +7,7 @@ import capaJan from "../../public/janeiro.jpeg";
 import capaFev from "../../public/fevereiro.jpeg";
 import capaMar from "../../public/marco.jpeg";
 
-// CORREÇÃO: Mude "InicioData" para "inicioData" (minúsculo)
-const inicioData = {
-  /* ===============================
-      EDIÇÃO ATUAL
-  =============================== */
+const homeData = {
   edicaoAtual: {
     id: "2025-03",
     titulo: "Periódico Espírita Fraternité",
@@ -19,7 +15,6 @@ const inicioData = {
     mesAno: "Março de 2025",
     capa: capaAtual,
     pdf: "/pdfs/periodico-marco-2025.pdf",
-
     descricao: `
       Nesta edição apresentamos temas fundamentais para o entendimento da 
       Doutrina Espírita, trazendo reflexões atuais, estudos aprofundados, 
@@ -28,9 +23,6 @@ const inicioData = {
     `,
   },
 
-  /* ===============================
-      CARROSSEL DA PÁGINA INICIAL
-  =============================== */
   carrossel: [
     {
       id: 1,
@@ -55,9 +47,6 @@ const inicioData = {
     },
   ],
 
-  /* ===============================
-      EDIÇÕES ANTERIORES
-  =============================== */
   edicoesAnteriores: [
     {
       id: "2025-02",
@@ -80,4 +69,4 @@ const inicioData = {
   ],
 };
 
-export default inicioData;
+export default homeData;

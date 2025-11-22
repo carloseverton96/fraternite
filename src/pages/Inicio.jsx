@@ -1,17 +1,17 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import "../css/index.css";
-import "../data/inicioData.js";
+import "../data/homeData.js";
 
 // COMPONENTES
 import Carousel from "../components/Carousel";
 
 // BANCO DE DADOS LOCAL
-import InicioData from "../data/inicioData"; // Importa como InicioData
+import homeData from "../data/homeData.js";
 
 export default function Inicio() {
   // CORREÇÃO: Use InicioData (com I maiúsculo) em vez de inicioData
-  const { edicaoAtual, edicoesAnteriores, carrossel } = InicioData;
+  const { edicaoAtual, edicoesAnteriores, carrossel } = homeData;
 
   return (
     <>
