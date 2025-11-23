@@ -2,6 +2,62 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import "../css/index.css";
 
+const handleWhatsAppSubmit = (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const nome = formData.get('nome').trim();
+  const email = formData.get('email').trim();
+  const assunto = formData.get('assunto');
+  const mensagem = formData.get('mensagem').trim();
+  
+  // Validação básica
+  if (!nome || !email || !assunto || !mensagem) {
+    alert('Por favor, preencha todos os campos.');
+    return;
+  }
+  
+  // Validar email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Por favor, insira um email válido.');
+    return;
+  }
+  
+  const assuntoMap = {
+    'editorial': '📝 Editorial/Conteúdo',
+    'tecnico': '🔧 Problema Técnico', 
+    'artigo': '📄 Submissão de Artigo',
+    'outro': '❓ Outro'
+  };
+  
+  const mensagemFormatada = `
+*🕊️ NOVA MENSAGEM - FRATERNITÉ*
+
+*👤 Nome:* ${nome}
+*📧 Email:* ${email}
+*📋 Assunto:* ${assuntoMap[assunto]}
+  
+*💬 Mensagem:*
+${mensagem}
+
+---
+_Enviado através do site Fraternité_
+  `.trim();
+  
+  // ATENÇÃO: Substitua pelo número real do WhatsApp
+  const telefone = "5588996541404"; // Exemplo: 55 (Brasil) + 11 (DDD) + 999999999
+  
+  const mensagemCodificada = encodeURIComponent(mensagemFormatada);
+  const urlWhatsApp = `https://wa.me/${telefone}?text=${mensagemCodificada}`;
+  
+  window.open(urlWhatsApp, '_blank');
+  e.target.reset();
+  
+  // Feedback opcional
+  alert('Redirecionando para WhatsApp...');
+};
+
 export default function Contatos() {
   return (
     <>
@@ -132,40 +188,41 @@ export default function Contatos() {
           </div>
 
           {/* Formulário de Contato Rápido */}
-          <div className="formulario-contato">
-            <h2 className="formulario-titulo">Envie uma Mensagem</h2>
-            <form className="contato-form">
-              <div className="form-group">
-                <label htmlFor="nome">Nome Completo</label>
-                <input type="text" id="nome" name="nome" required />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="assunto">Assunto</label>
-                <select id="assunto" name="assunto" required>
-                  <option value="">Selecione o assunto</option>
-                  <option value="editorial">Editorial/Conteúdo</option>
-                  <option value="tecnico">Problema Técnico</option>
-                  <option value="artigo">Submissão de Artigo</option>
-                  <option value="outro">Outro</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-              </div>
-              
-              <button type="submit" className="bio-button enviar-btn">
-                📤 Enviar Mensagem
-              </button>
-            </form>
-          </div>
+<div className="formulario-contato">
+  <h2 className="formulario-titulo">Envie uma Mensagem</h2>
+  <form className="contato-form" onSubmit={handleWhatsAppSubmit}>
+    <div className="form-group">
+      <label htmlFor="nome">Nome Completo</label>
+      <input type="text" id="nome" name="nome" required />
+    </div>
+    
+    <div className="form-group">
+      <label htmlFor="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    
+    <div className="form-group">
+      <label htmlFor="assunto">Assunto</label>
+      <select id="assunto" name="assunto" required>
+        <option value="">Selecione o assunto</option>
+        <option value="editorial">Editorial/Conteúdo</option>
+        <option value="tecnico">Problema Técnico</option>
+        <option value="artigo">Submissão de Artigo</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+    
+    <div className="form-group">
+      <label htmlFor="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+    </div>
+    <h4>Observação: Sua mensagem será enviada para o WhatsApp do diretor do Periódico Fraternité.</h4>
+    <button type="submit" className="bio-button enviar-btn">
+      💬 Enviar via WhatsApp
+    </button>
+    
+  </form>
+</div>
 
         </section>
       </main>

@@ -70,7 +70,7 @@ export default function Inicio() {
                 className="bio-button leitura-online"
                 href={`/periodico/${edicaoAtual.id}`}
               >
-                👓 Ler Online no Navegador
+                📖 Ler Online no Navegador
               </a>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function Inicio() {
                     className="anteriores-link leitura-online2"
                     href={`/periodico/${item.id}`}
                   >
-                    👓 Ler Online
+                    📖 Ler Online
                   </a>
                 </div>
               </div>

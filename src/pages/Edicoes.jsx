@@ -5,7 +5,7 @@ import homeData from "../data/homeData.js";
 
 export default function Edicoes() {
   const [paginaAtual, setPaginaAtual] = useState(1);
-  const itensPorPagina = 8;
+  const itensPorPagina = 9;
 
   // Combinar edição atual com edições anteriores
   const todasEdicoes = [
@@ -96,7 +96,7 @@ export default function Edicoes() {
                   to={edicao.link}
                   className="edicao-link online-link"
                 >
-                  👓 Ler Online
+                  📖 Ler Online
                 </Link>
               </div>
             </div>
