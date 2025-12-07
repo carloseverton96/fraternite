@@ -18,10 +18,9 @@ export default [
      descricao: "E teve mais festa de aniversário! No dia 28/11/2025, o Centro Espírita Luz do Caminho, de Barbalha, comemorou 28 anos de fundação. Quanta paz e felicidade! Os confrades do movimento espírita do Cariri puderam acompanhar uma bela apresentação do coral infantil da casa. A palestra ficou por conta do irmão Júlio César, então presidente da ARE 6 – Aliança Regional Espírita do Cariri e presidente da casa GEFIS, de Juazeiro do Norte. Após a palestra, tivemos as delícias da cozinha de dona Sandra — que maravilha! Desejamos muita paz e muito trabalho nos próximos 28 anos!",
     fotos: [
       "aniversarioluzdocaminho/01.png", // ✅ SEM BARRA INICIAL
-      "aniversarioluzdocaminho/02.png",
-      "aniversarioluzdocaminho/03.png",
-      "aniversarioluzdocaminho/04.png",
-      "aniversarioluzdocaminho/05.png"
+      "aniversarioluzdocaminho/02.jpg",
+      "aniversarioluzdocaminho/03.jpg",
+      "aniversarioluzdocaminho/04.png"
     ]
   },
 
@@ -30,11 +29,9 @@ export default [
      titulo: "Chá beneficente do Centro Espírita André Luiz – CEAL – Crato",
      descricao: "O dia 06/12/2025 foi de chá, e foi chá beneficente promovido pelo Centro Espírita André Luiz – CEAL – Crato. Estava uma lindeza! Muitos presentes, e, junto com o coral da Casa da Esperança a noite foi regada a boa música e comida. Tivemos uma breve fala e a prece proferidas pela trabalhadora Madalena, também uma fala da presidente da casa, Socorro e também do presidente eleito da ARE 6, Gonçalo. Depois fomos todos apreciar a variedade dos quitutes do André Luiz! Muitos sorridos e muita paz entre os presentes. Oramos que o Senhor Jesus abençoe cada vez mais esta linda casa. ",
     fotos: [
-      "chabeneficenteandreluiz/01.png", // ✅ SEM BARRA INICIAL
-      "chabeneficenteandreluiz/02.png",
-      "chabeneficenteandreluiz/03.png",
-      "chabeneficenteandreluiz/04.png",
-      "chabeneficenteandreluiz/05.png"
+      "chabeneficenteandreluiz/01.jpeg", // ✅ SEM BARRA INICIAL
+      "chabeneficenteandreluiz/02.jpeg",
+      "chabeneficenteandreluiz/03.jpeg"
     ]
   },
 
@@ -43,11 +40,10 @@ export default [
      titulo: "Eleições da ARE 6 – Aliança Regional Espírita do Cariri",
      descricao: "No dia 29/11/2025 foram realizadas as eleições para a nova gestão da ARE 6 – Aliança Regional Espírita do Cariri, órgão de extensão da Federação Espírita do Estado do Ceará – FEEC. Em um clima de paz e harmonia, tivemos a inscrição de duas chapas: Chapa 1 – Gonçalo Queiroz, Isaac Bruno e Gilberto Oliveira; Chapa 2 – Socorro Gomes, Cícero Pereira e Dalva Teles. A participação dos representantes das casas se deu de forma presencial e online, registrando-se 14 votos. A Chapa 1 foi eleita para a gestão que se inicia em 1º de janeiro de 2026 e vai até 31 de dezembro de 2027.\nPresidente – Gonçalo Queiroz (Allan Kardec – Crato)\n1º Secretário – Isaac Bruno (CEMIL – Juazeiro do Norte)\n2º Secretário – Gilberto Oliveira (Bom Samaritano – Crato)\nGostaríamos de salientar que o movimento é uno e assim deve permanecer. Contamos com a inspiração do Senhor Jesus e com toda a ajuda dos amigos encarnados e desencarnados para que tudo transcorra conforme o Mestre Divino indica.\n'Arme-se a vossa falange de decisão e coragem! Mãos à obra! O arado está pronto; a terra espera; arai!'\nErasto – Paris, 1863",
     fotos: [
-      "eleiçõesare6/01.png", // ✅ SEM BARRA INICIAL
-      "eleiçõesare6/02.png",
-      "eleiçõesare6/03.png",
-      "eleiçõesare6/04.png",
-      "eleiçõesare6/05.png"
+      "eleiçõesare6/01.jpg", // ✅ SEM BARRA INICIAL
+      "eleiçõesare6/02.jpg",
+      "eleiçõesare6/03.jpg",
+      "eleiçõesare6/04.jpg"
     ]
   },
   
