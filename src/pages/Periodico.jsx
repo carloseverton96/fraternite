@@ -59,7 +59,24 @@ export default function Periodico() {
 
       <hr className="periodico-divider" />
 
-      {/* Informações Adicionais */}
+      
+      
+      {/* Visualizador de PDF Embed */}
+      <div className="pdf-viewer-container">
+        <h3>Visualização do Periódico</h3>
+        <div className="pdf-viewer">
+          <embed
+            src={`${periodico.pdf}#view=FitH`}
+            type="application/pdf"
+            width="100%"
+            height="600px"
+          />
+        </div>
+        <p className="pdf-viewer-note">
+          Se o PDF não carregar acima, use os botões abaixo para ler online ou baixar.
+        </p>
+      </div>
+{/* Informações Adicionais */}
       <div className="periodico-meta-info">
         <div className="meta-item">
           <strong>Publicação:</strong> Periódico Espírita Fraternité
@@ -81,23 +98,6 @@ export default function Periodico() {
           </div>
         )}
       </div>
-      
-      {/* Visualizador de PDF Embed */}
-      <div className="pdf-viewer-container">
-        <h3>Visualização do Periódico</h3>
-        <div className="pdf-viewer">
-          <embed
-            src={`${periodico.pdf}#view=FitH`}
-            type="application/pdf"
-            width="100%"
-            height="600px"
-          />
-        </div>
-        <p className="pdf-viewer-note">
-          Se o PDF não carregar acima, use os botões abaixo para ler online ou baixar.
-        </p>
-      </div>
-
       {/* Ações Principais */}
       <div className="periodico-actions-simple">
         <button

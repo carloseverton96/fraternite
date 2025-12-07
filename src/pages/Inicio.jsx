@@ -85,7 +85,7 @@ export default function Inicio() {
 
         {/* =============== EDIÇÕES ANTERIORES =============== */}
         <section className="anteriores-section">
-          <h2 className="anteriores-titulo">Edições Anteriores</h2>
+          {/* <h2 className="anteriores-titulo">Edições Anteriores</h2> */}
 
           <div className="anteriores-grid">
             {edicoesAnteriores.map((item) => (

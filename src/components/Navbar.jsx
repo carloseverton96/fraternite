@@ -38,6 +38,11 @@ export default function Navbar() {
               Contatos
             </Link>
           </li>
+          <li>
+            <Link to="/eventos" className="nav-link">
+              Eventos
+            </Link>
+          </li>
         </ul>
 
       </div>
